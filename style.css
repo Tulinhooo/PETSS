@@ -1,0 +1,619 @@
+/* =====================================================
+   SITE PRINCIPAL - FRIENDS&MEL
+===================================================== */
+
+.site-principal {
+    background: #fffaf5;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.pet-hero {
+
+    min-height: 650px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background-image:
+        url("Amizade Pet.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+    overflow: hidden;
+
+}
+
+
+.pet-hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.15)
+        );
+
+}
+
+
+.pet-hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 850px;
+
+    padding: 40px;
+
+    color: white;
+
+}
+
+
+.pet-hero h1 {
+
+    font-size: 58px;
+
+    line-height: 1.1;
+
+    margin: 20px 0;
+
+}
+
+
+.pet-hero h1 span {
+
+    color: #ffd166;
+
+}
+
+
+.pet-hero p {
+
+    max-width: 700px;
+
+    margin: 0 auto 30px;
+
+    font-size: 20px;
+
+    line-height: 1.7;
+
+}
+
+
+.hero-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+}
+
+
+/* =====================================================
+   SEÇÕES
+===================================================== */
+
+.pet-section {
+
+    padding: 90px 8%;
+
+    text-align: center;
+
+}
+
+
+.pet-section-light {
+
+    background: #f3f9f6;
+
+}
+
+
+.section-title {
+
+    max-width: 800px;
+
+    margin: 0 auto 50px;
+
+}
+
+
+.section-title h2 {
+
+    font-size: 40px;
+
+    color: #173b32;
+
+    margin: 15px 0;
+
+}
+
+
+.section-title p {
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    color: #555;
+
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.pet-cards {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+
+}
+
+
+.pet-card {
+
+    background: white;
+
+    padding: 35px 25px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.08);
+
+    transition: 0.3s;
+
+}
+
+
+.pet-card:hover {
+
+    transform: translateY(-8px);
+
+}
+
+
+.pet-icon {
+
+    font-size: 55px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.pet-card h3 {
+
+    font-size: 25px;
+
+    color: #173b32;
+
+}
+
+
+.pet-card p {
+
+    color: #666;
+
+    line-height: 1.6;
+
+}
+
+
+/* =====================================================
+   CUIDADOS
+===================================================== */
+
+.care-grid {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+
+}
+
+
+.care-card {
+
+    background: white;
+
+    padding: 30px 20px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.07);
+
+    transition: 0.3s;
+
+}
+
+
+.care-card:hover {
+
+    transform: translateY(-7px);
+
+}
+
+
+.care-card span {
+
+    font-size: 45px;
+
+}
+
+
+.care-card h3 {
+
+    color: #173b32;
+
+    font-size: 21px;
+
+}
+
+
+.care-card p {
+
+    color: #666;
+
+    line-height: 1.6;
+
+}
+
+
+/* =====================================================
+   COMUNIDADE
+===================================================== */
+
+.community-box {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+    text-align: left;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e8f7ef,
+            #fff5df
+        );
+
+    border-radius: 25px;
+
+}
+
+
+.community-icon {
+
+    font-size: 70px;
+
+}
+
+
+.community-box h3 {
+
+    font-size: 28px;
+
+    color: #173b32;
+
+}
+
+
+.community-box p {
+
+    color: #555;
+
+    line-height: 1.6;
+
+}
+
+
+/* =====================================================
+   CONTATO
+===================================================== */
+
+.contact-section {
+
+    padding: 100px 8%;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #173b32,
+            #287c62
+        );
+
+    color: white;
+
+}
+
+
+.contact-content {
+
+    max-width: 750px;
+
+    margin: auto;
+
+}
+
+
+.contact-content h2 {
+
+    font-size: 40px;
+
+    margin: 20px 0;
+
+}
+
+
+.contact-content p {
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+
+}
+
+
+.contact-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+}
+
+
+/* =====================================================
+   BOTÕES
+===================================================== */
+
+.btn {
+
+    display: inline-block;
+
+    padding: 14px 25px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+
+}
+
+
+.btn-primary {
+
+    background: #ff8c42;
+
+    color: white;
+
+}
+
+
+.btn-primary:hover {
+
+    background: #e66f25;
+
+    transform: translateY(-2px);
+
+}
+
+
+.btn-primary:active {
+
+    transform: scale(0.97);
+
+}
+
+
+.btn-primary:focus {
+
+    outline: 3px solid #ffd166;
+
+}
+
+
+.btn-secondary {
+
+    background: white;
+
+    color: #173b32;
+
+}
+
+
+.btn-secondary:hover {
+
+    background: #f1f1f1;
+
+    transform: translateY(-2px);
+
+}
+
+
+.btn-secondary:active {
+
+    transform: scale(0.97);
+
+}
+
+
+.btn-secondary:focus {
+
+    outline: 3px solid #ffd166;
+
+}
+
+
+.btn-large {
+
+    padding: 17px 30px;
+
+}
+
+
+/* =====================================================
+   TAG
+===================================================== */
+
+.tag {
+
+    display: inline-block;
+
+    padding: 8px 15px;
+
+    border-radius: 30px;
+
+    background: #fff0d8;
+
+    color: #c7651f;
+
+    font-weight: bold;
+
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .pet-hero h1 {
+
+        font-size: 42px;
+
+    }
+
+
+    .pet-cards {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .care-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .pet-hero {
+
+        min-height: 600px;
+
+    }
+
+
+    .pet-hero h1 {
+
+        font-size: 34px;
+
+    }
+
+
+    .pet-hero-content {
+
+        padding: 25px;
+
+    }
+
+
+    .care-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .community-box {
+
+        flex-direction: column;
+
+        text-align: center;
+
+    }
+
+
+    .section-title h2 {
+
+        font-size: 30px;
+
+    }
+
+}

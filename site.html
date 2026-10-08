@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends&Mel</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #ffffff;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            min-height: 75px;
+            padding: 0 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: #ff7a00;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .menu-link {
+            display: block;
+            padding: 12px 16px;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .menu-link:hover {
+            background: #ff7a00;
+            color: white;
+        }
+
+        .menu-link:active {
+            transform: scale(0.96);
+        }
+
+        .menu-link:focus {
+            outline: 3px solid #ffd166;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 180px;
+            background: white;
+            list-style: none;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            overflow: hidden;
+        }
+
+        .submenu.active {
+            display: block;
+        }
+
+        .submenu a {
+            display: block;
+            padding: 12px 15px;
+            color: #333;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .submenu a:hover {
+            background: #ff7a00;
+            color: white;
+        }
+
+        .btn {
+            display: inline-block;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 22px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #ff7a00;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e56700;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #ff7a00;
+            border: 2px solid #ff7a00;
+        }
+
+        .btn-secondary:hover {
+            background: #ff7a00;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #b02a37;
+        }
+
+        .pet-hero {
+            min-height: 600px;
+            background-image: url("Amizade Pet.png");
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pet-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        .pet-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 850px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .pet-hero-content h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+        }
+
+        .pet-hero-content p {
+            font-size: 21px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 18px;
+            margin-bottom: 20px;
+            border-radius: 30px;
+            background: #ff7a00;
+            color: white;
+            font-weight: bold;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .pet-section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 80px 25px;
+        }
+
+        .pet-section-light {
+            background: #ffffff;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #ff7a00;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .pet-section > p {
+            max-width: 850px;
+            margin: 0 auto 40px;
+            text-align: center;
+            line-height: 1.7;
+            font-size: 18px;
+        }
+
+        .pet-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .pet-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .pet-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .pet-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .pet-card h3 {
+            color: #ff7a00;
+            margin-bottom: 12px;
+            font-size: 22px;
+        }
+
+        .pet-card p {
+            line-height: 1.6;
+        }
+
+        .care-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .care-card {
+            padding: 25px;
+            background: #fff3e8;
+            border-radius: 15px;
+            border-left: 6px solid #ff7a00;
+        }
+
+        .care-card h3 {
+            margin-bottom: 10px;
+            color: #e56700;
+        }
+
+        .care-card p {
+            line-height: 1.6;
+        }
+
+        .community-box {
+            max-width: 850px;
+            margin: auto;
+            padding: 40px;
+            text-align: center;
+            background: #fff3e8;
+            border-radius: 20px;
+        }
+
+        .community-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .community-box h3 {
+            color: #ff7a00;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .community-box p {
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .contact-section {
+            background: #ff7a00;
+            color: white;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-section .section-title {
+            color: white;
+        }
+
+        .contact-content p {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .contact-buttons p {
+            margin: 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .site-footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .site-footer p {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 900px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px;
+                gap: 10px;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .pet-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .care-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pet-hero-content h1 {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-menu {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .submenu {
+                position: static;
+                width: 100%;
+            }
+
+            .pet-hero {
+                min-height: 500px;
+            }
+
+            .pet-hero-content h1 {
+                font-size: 32px;
+            }
+
+            .pet-hero-content p {
+                font-size: 17px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="site.html" class="logo">Friends&Mel</a>
+
+            <ul class="nav-menu">
+
+                <li>
+                    <a href="site.html" class="menu-link">Início</a>
+                </li>
+
+                <li>
+                    <a href="#cuidados" class="menu-link">Cuidados</a>
+                </li>
+
+                <li>
+                    <a href="#" class="menu-link" id="btn-sobre">Sobre ▾</a>
+
+                    <ul class="submenu" id="menu-vertical-sobre">
+                        <li>
+                            <a href="#empresa">Empresa</a>
+                        </li>
+
+                        <li>
+                            <a href="#clientes">Clientes</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="menu-link" id="btn-contato">Contato ▾</a>
+
+                    <ul class="submenu" id="menu-vertical-contato">
+                        <li>
+                            <a href="#contato">Telefones</a>
+                        </li>
+
+                        <li>
+                            <a href="mailto:tulilian@amorinfinitopet.com">Email</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <button class="btn btn-danger" onclick="logout()">Sair</button>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="pet-hero">
+
+            <div class="pet-hero-overlay"></div>
+
+            <div class="pet-hero-content">
+
+                <span class="tag">🐾 Amor pelos animais</span>
+
+                <h1>Bem-vindo à Friends&Mel</h1>
+
+                <p>
+                    Um espaço criado para pessoas que amam, cuidam e valorizam
+                    seus animais de estimação.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#cuidados" class="btn btn-primary">
+                        Conheça nossos cuidados
+                    </a>
+
+                    <a href="#contato" class="btn btn-secondary">
+                        Entre em contato
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="pet-section" id="empresa">
+
+            <h2 class="section-title">Sobre a Friends&Mel</h2>
+
+            <p>
+                A Friends&Mel é uma empresa dedicada ao cuidado, bem-estar e
+                felicidade dos animais. Nosso objetivo é oferecer informações,
+                carinho e serviços para melhorar a vida dos pets e de seus donos.
+            </p>
+
+            <div class="pet-cards">
+
+                <article class="pet-card">
+
+                    <div class="pet-icon">🐶</div>
+
+                    <h3>Amor</h3>
+
+                    <p>
+                        Acreditamos que todo animal merece carinho, respeito
+                        e uma vida cheia de amor.
+                    </p>
+
+                </article>
+
+                <article class="pet-card">
+
+                    <div class="pet-icon">🐱</div>
+
+                    <h3>Cuidado</h3>
+
+                    <p>
+                        Incentivamos práticas responsáveis para garantir
+                        saúde e qualidade de vida aos animais.
+                    </p>
+
+                </article>
+
+                <article class="pet-card">
+
+                    <div class="pet-icon">❤️</div>
+
+                    <h3>Amizade</h3>
+
+                    <p>
+                        Pets fazem parte da família e criam laços especiais
+                        com seus donos.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <section class="pet-section pet-section-light" id="cuidados">
+
+            <h2 class="section-title">Cuidados com seu Pet</h2>
+
+            <p>
+                Alguns cuidados são fundamentais para manter seu animal
+                saudável, feliz e protegido.
+            </p>
+
+            <div class="care-grid">
+
+                <article class="care-card">
+
+                    <h3>🍖 Alimentação</h3>
+
+                    <p>
+                        Ofereça uma alimentação adequada para a idade,
+                        tamanho e necessidades do seu animal.
+                    </p>
+
+                </article>
+
+                <article class="care-card">
+
+                    <h3>🏥 Saúde</h3>
+
+                    <p>
+                        Mantenha as vacinas, consultas e cuidados veterinários
+                        sempre em dia.
+                    </p>
+
+                </article>
+
+                <article class="care-card">
+
+                    <h3>🏃 Exercícios</h3>
+
+                    <p>
+                        Brincadeiras e atividades físicas ajudam a manter
+                        seu pet ativo e saudável.
+                    </p>
+
+                </article>
+
+                <article class="care-card">
+
+                    <h3>🧼 Higiene</h3>
+
+                    <p>
+                        Banhos, escovação e limpeza são importantes para
+                        o bem-estar do animal.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <section class="pet-section" id="clientes">
+
+            <h2 class="section-title">Nossos Clientes</h2>
+
+            <div class="community-box">
+
+                <div class="community-icon">🐾</div>
+
+                <h3>Uma comunidade apaixonada por pets</h3>
+
+                <p>
+                    Fazemos parte de uma comunidade formada por pessoas
+                    que acreditam que os animais merecem respeito,
+                    proteção e muito carinho.
+                </p>
+
+                <a href="#contato" class="btn btn-primary">
+                    Faça parte
+                </a>
+
+            </div>
+
+        </section>
+
+        <section class="pet-section contact-section" id="contato">
+
+            <div class="contact-content">
+
+                <h2 class="section-title">Entre em Contato</h2>
+
+                <p>
+                    Fale com a equipe Friends&Mel para saber mais.
+                </p>
+
+                <div class="contact-buttons">
+
+                    <p>📞 (32) 99810120604</p>
+
+                    <p>✉️ tulilian@amorinfinitopet.com</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <p id="dataAtual"></p>
+
+        <p>
+            Todos os direitos reservados. Friends&Mel
+        </p>
+
+    </footer>
+
+    <script>
+        const btnSobre = document.getElementById("btn-sobre");
+        const menuSobre = document.getElementById("menu-vertical-sobre");
+
+        const btnContato = document.getElementById("btn-contato");
+        const menuContato = document.getElementById("menu-vertical-contato");
+
+        btnSobre.addEventListener("click", function(event) {
+            event.preventDefault();
+
+            menuSobre.classList.toggle("active");
+
+            menuContato.classList.remove("active");
+        });
+
+        btnContato.addEventListener("click", function(event) {
+            event.preventDefault();
+
+            menuContato.classList.toggle("active");
+
+            menuSobre.classList.remove("active");
+        });
+
+        document.addEventListener("click", function(event) {
+
+            if (
+                !btnSobre.contains(event.target) &&
+                !menuSobre.contains(event.target)
+            ) {
+                menuSobre.classList.remove("active");
+            }
+
+            if (
+                !btnContato.contains(event.target) &&
+                !menuContato.contains(event.target)
+            ) {
+                menuContato.classList.remove("active");
+            }
+
+        });
+
+        const dataAtual = document.getElementById("dataAtual");
+
+        const data = new Date();
+
+        dataAtual.textContent =
+            "Data: " + data.toLocaleDateString("pt-BR");
+
+        function logout() {
+
+            localStorage.removeItem("usuarioLogadoFriendsMel");
+
+            localStorage.removeItem("usuarioFriendsMel");
+
+            window.location.href = "index.html";
+        }
+
+        const usuarioLogado =
+            localStorage.getItem("usuarioLogadoFriendsMel");
+
+        const usuario =
+            localStorage.getItem("usuarioFriendsMel");
+
+        if (usuarioLogado !== "true" || !usuario) {
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+
+</html>

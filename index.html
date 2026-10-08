@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Friends&Mel | Início</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            min-height: 75px;
+            margin: auto;
+            padding: 0 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            color: #ff7a00;
+            text-decoration: none;
+            font-size: 26px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .logo strong {
+            color: #333;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a,
+        .menu-link {
+            display: block;
+            padding: 12px 15px;
+            border: none;
+            background: transparent;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .menu-link:hover {
+            background: #ff7a00;
+            color: #ffffff;
+        }
+
+        .nav-menu a:focus,
+        .menu-link:focus {
+            outline: 3px solid #ffd29b;
+            outline-offset: 2px;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            padding: 8px;
+            list-style: none;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+            display: none;
+        }
+
+        .submenu.active {
+            display: block;
+        }
+
+        .submenu li {
+            width: 100%;
+        }
+
+        .submenu a {
+            width: 100%;
+            padding: 12px;
+        }
+
+        .submenu a:hover {
+            background: #ff7a00;
+            color: #ffffff;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 22px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-nav {
+            background: #ff7a00;
+            color: #ffffff;
+        }
+
+        .btn-nav:hover {
+            background: #e56600;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: #ff7a00;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #e56600;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 122, 0, 0.35);
+        }
+
+        .btn-large {
+            padding: 17px 30px;
+            font-size: 18px;
+        }
+
+        .hero-inicial {
+            position: relative;
+            min-height: 100vh;
+            background-image: url("Amizade Pet.png");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 70px;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.72),
+                rgba(0, 0, 0, 0.40),
+                rgba(0, 0, 0, 0.20)
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 9px 18px;
+            margin-bottom: 22px;
+            background: #ff7a00;
+            color: #ffffff;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(42px, 6vw, 72px);
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+
+        .hero-content h1 span {
+            color: #ff9b45;
+        }
+
+        .hero-content p {
+            max-width: 730px;
+            margin: 0 auto 35px;
+            font-size: 20px;
+            line-height: 1.7;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .info-section {
+            min-height: 450px;
+            padding: 90px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+        }
+
+        .info-alt {
+            background: #fff5ec;
+        }
+
+        .info-card {
+            width: 100%;
+            max-width: 900px;
+            padding: 55px;
+            text-align: center;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .info-card h2 {
+            margin-bottom: 20px;
+            color: #ff7a00;
+            font-size: 38px;
+        }
+
+        .info-card p {
+            color: #555;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .site-footer {
+            background: #222222;
+            color: #ffffff;
+            text-align: center;
+            padding: 28px 20px;
+        }
+
+        .site-footer p {
+            font-size: 15px;
+        }
+
+        @media (max-width: 900px) {
+            .navbar {
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 15px;
+            }
+
+            .site-header {
+                position: relative;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-inicial {
+                min-height: 750px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 22px;
+            }
+
+            .nav-menu {
+                gap: 2px;
+            }
+
+            .nav-menu a,
+            .menu-link {
+                padding: 9px 10px;
+                font-size: 14px;
+            }
+
+            .btn-nav {
+                font-size: 14px;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .hero-content p {
+                font-size: 17px;
+            }
+
+            .info-card {
+                padding: 35px 20px;
+            }
+
+            .info-card h2 {
+                font-size: 30px;
+            }
+
+            .info-card p {
+                font-size: 16px;
+            }
+
+            .submenu {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+
+<body class="pagina-inicial">
+
+    <header class="site-header">
+
+        <nav class="navbar" aria-label="Menu principal">
+
+            <a class="logo" href="index.html">
+                🐾 Friends&<strong>Mel</strong>
+            </a>
+
+            <ul class="nav-menu">
+
+                <li>
+                    <a href="index.html">
+                        Início
+                    </a>
+                </li>
+
+                <li>
+                    <a href="login.html">
+                        Login
+                    </a>
+                </li>
+
+                <li class="dropdown">
+
+                    <button
+                        class="menu-link"
+                        id="btn-sobre"
+                        type="button"
+                        aria-expanded="false">
+
+                        Sobre ▾
+
+                    </button>
+
+                    <ul class="submenu" id="menu-sobre">
+
+                        <li>
+                            <a href="#empresa">
+                                Empresa
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#clientes">
+                                Clientes
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li class="dropdown">
+
+                    <button
+                        class="menu-link"
+                        id="btn-contato"
+                        type="button"
+                        aria-expanded="false">
+
+                        Contato ▾
+
+                    </button>
+
+                    <ul class="submenu" id="menu-contato">
+
+                        <li>
+                            <a href="tel:+553299810120604">
+                                📞 (32) 99810120604
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="mailto:tulilian@amorinfinitopet.com">
+                                ✉️ tulilian@amorinfinitopet.com
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+            </ul>
+
+            <a
+                class="btn btn-nav"
+                href="cadastro.html">
+
+                🐾 Cadastre-se
+
+            </a>
+
+        </nav>
+
+    </header>
+
+    <main>
+
+        <section
+            class="hero-inicial"
+            aria-labelledby="titulo-principal">
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+
+                <span class="tag">
+                    🐶 Feito para quem ama pets
+                </span>
+
+                <h1 id="titulo-principal">
+
+                    O cuidado que seu
+                    <span>melhor amigo</span>
+                    merece.
+
+                </h1>
+
+                <p>
+
+                    A Friends&Mel é uma plataforma criada
+                    para ajudar tutores a cuidar, acompanhar
+                    e proporcionar uma vida mais feliz e
+                    saudável para seus pets.
+
+                </p>
+
+                <a
+                    class="btn btn-primary btn-large"
+                    href="cadastro.html">
+
+                    🐾 Cadastre-se para participar
+
+                </a>
+
+            </div>
+
+        </section>
+
+        <section
+            class="info-section"
+            id="empresa">
+
+            <div class="info-card">
+
+                <span class="tag">
+                    Sobre
+                </span>
+
+                <h2>
+                    Nossa Empresa
+                </h2>
+
+                <p>
+
+                    A Friends&Mel é um projeto voltado
+                    para pessoas que amam animais e
+                    desejam organizar melhor seus cuidados.
+
+                    Nossa missão é aproximar tutores de
+                    informações e ferramentas que ajudam
+                    a proporcionar uma vida mais feliz
+                    aos seus pets.
+
+                </p>
+
+            </div>
+
+        </section>
+
+        <section
+            class="info-section info-alt"
+            id="clientes">
+
+            <div class="info-card">
+
+                <span class="tag">
+                    Para quem é
+                </span>
+
+                <h2>
+                    Nossos Clientes
+                </h2>
+
+                <p>
+
+                    Nosso público são tutores, famílias
+                    e pessoas que amam animais e querem
+                    oferecer mais carinho, organização,
+                    atenção e qualidade de vida aos seus pets.
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <p>
+
+            <span id="dataAtual"></span>
+
+            •
+
+            Todos os direitos reservados.
+
+            Friends&Mel
+
+        </p>
+
+    </footer>
+
+    <script>
+        const btnSobre = document.getElementById("btn-sobre");
+        const menuSobre = document.getElementById("menu-sobre");
+
+        const btnContato = document.getElementById("btn-contato");
+        const menuContato = document.getElementById("menu-contato");
+
+        btnSobre.addEventListener("click", function(event) {
+            event.stopPropagation();
+
+            menuSobre.classList.toggle("active");
+            menuContato.classList.remove("active");
+
+            btnSobre.setAttribute(
+                "aria-expanded",
+                menuSobre.classList.contains("active")
+            );
+
+            btnContato.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+        });
+
+        btnContato.addEventListener("click", function(event) {
+            event.stopPropagation();
+
+            menuContato.classList.toggle("active");
+            menuSobre.classList.remove("active");
+
+            btnContato.setAttribute(
+                "aria-expanded",
+                menuContato.classList.contains("active")
+            );
+
+            btnSobre.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+        });
+
+        document.addEventListener("click", function() {
+            menuSobre.classList.remove("active");
+            menuContato.classList.remove("active");
+
+            btnSobre.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            btnContato.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+        });
+
+        menuSobre.addEventListener("click", function(event) {
+            event.stopPropagation();
+        });
+
+        menuContato.addEventListener("click", function(event) {
+            event.stopPropagation();
+        });
+
+        const dataAtual = document.getElementById("dataAtual");
+
+        const hoje = new Date();
+
+        dataAtual.textContent = hoje.toLocaleDateString("pt-BR");
+    </script>
+
+</body>
+
+</html>
